@@ -195,7 +195,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
 
   // Validator implementations
   const validateMissingColumns = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     const requiredColumns = {
       clients: ['ClientID', 'ClientName', 'PriorityLevel', 'RequestedTaskIDs', 'GroupTag'],
       workers: ['WorkerID', 'WorkerName', 'Skills', 'AvailableSlots', 'MaxLoadPerPhase'],
@@ -220,7 +220,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateDuplicateIds = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     const idField = entityType === 'clients' ? 'ClientID' : 
                    entityType === 'workers' ? 'WorkerID' : 'TaskID';
     
@@ -241,7 +241,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateMalformedLists = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     
     data.forEach((row, index) => {
       // Validate Skills (workers) and RequiredSkills (tasks)
@@ -324,7 +324,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateOutOfRange = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     const ranges = {
       PriorityLevel: { min: 1, max: 5 },
       MaxLoadPerPhase: { min: 1, max: 20 },
@@ -352,7 +352,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateBrokenJson = (data: any[]) => {
-    const issues = [];
+    const issues: any[] = [];
     
     data.forEach((row, index) => {
       if (row.AttributesJSON) {
@@ -377,7 +377,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateUnknownReferences = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     
     // Only validate if we're dealing with clients and have RequestedTaskIDs
     data.forEach((row, index) => {
@@ -413,7 +413,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateOverloadedWorkers = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     
     if (entityType === 'workers') {
       data.forEach((row, index) => {
@@ -432,7 +432,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateCapacitySaturation = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     
     if (entityType === 'workers') {
       data.forEach((row, index) => {
@@ -458,7 +458,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateSkillCoverage = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     
     if (entityType === 'workers') {
       data.forEach((row, index) => {
@@ -480,7 +480,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   };
 
   const validateMaxConcurrency = (data: any[], entityType: string) => {
-    const issues = [];
+    const issues: any[] = [];
     
     if (entityType === 'tasks') {
       data.forEach((row, index) => {
