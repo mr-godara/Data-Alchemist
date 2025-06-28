@@ -245,7 +245,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
     // 7. Detect empty or very short task lists
     data.forEach((row, index) => {
       if (row.RequestedTaskIDs && typeof row.RequestedTaskIDs === 'string') {
-        const taskIds = row.RequestedTaskIDs.split(',').map((id: string) => id.trim()).filter(id => id.length > 0);
+        const taskIds = row.RequestedTaskIDs.split(',').map((id: string) => id.trim()).filter((id: string) => id.length > 0);
         
         if (taskIds.length === 1) {
           anomalies.push({
@@ -301,7 +301,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
 
   const applySuggestion = (anomaly: Anomaly) => {
     // Mark this suggestion as applied
-    setAppliedSuggestions(prev => new Set([...prev, anomaly.id]));
+    setAppliedSuggestions(prev => new Set(Array.from(prev).concat(anomaly.id)));
     
     // Call the parent callback with the anomaly data
     onAnomalyFound({

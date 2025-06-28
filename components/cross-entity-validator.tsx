@@ -95,7 +95,7 @@ export function CrossEntityValidator({
       if (client.RequestedTaskIDs) {
         const requestedTasks = client.RequestedTaskIDs.split(',').map((id: string) => id.trim());
         
-        requestedTasks.forEach(taskId => {
+        requestedTasks.forEach((taskId: string) => {
           if (taskId && !taskIds.has(taskId)) {
             results.push({
               id: `client-task-${index}-${taskId}`,
@@ -149,19 +149,19 @@ export function CrossEntityValidator({
     
     // Collect all worker skills
     const allWorkerSkills = new Set<string>();
-    workers.forEach(worker => {
+    workers.forEach((worker: any) => {
       if (worker.Skills) {
         const skills = worker.Skills.split(',').map((skill: string) => skill.trim());
-        skills.forEach(skill => allWorkerSkills.add(skill));
+        skills.forEach((skill: string) => allWorkerSkills.add(skill));
       }
     });
     
-    tasks.forEach((task, index) => {
+    tasks.forEach((task: any, index: number) => {
       if (task.RequiredSkills) {
         const requiredSkills = task.RequiredSkills.split(',').map((skill: string) => skill.trim());
         const missingSkills: string[] = [];
         
-        requiredSkills.forEach(skill => {
+        requiredSkills.forEach((skill: string) => {
           if (skill && !allWorkerSkills.has(skill)) {
             missingSkills.push(skill);
           }
@@ -182,7 +182,7 @@ export function CrossEntityValidator({
         }
         
         // Check for skill redundancy (too many workers with same skill)
-        requiredSkills.forEach(skill => {
+        requiredSkills.forEach((skill: string) => {
           const workersWithSkill = workers.filter(worker => 
             worker.Skills && worker.Skills.includes(skill)
           ).length;
@@ -209,7 +209,7 @@ export function CrossEntityValidator({
   const validateWorkerPhaseAvailability = (workers: any[], tasks: any[]): ValidationResult[] => {
     const results: ValidationResult[] = [];
     
-    workers.forEach((worker, index) => {
+    workers.forEach((worker: any, index: number) => {
       if (worker.AvailableSlots) {
         try {
           const availableSlots = JSON.parse(worker.AvailableSlots);
@@ -343,7 +343,7 @@ export function CrossEntityValidator({
   const validatePreferredPhasesNormalization = (tasks: any[]): ValidationResult[] => {
     const results: ValidationResult[] = [];
     
-    tasks.forEach((task, index) => {
+    tasks.forEach((task: any, index: number) => {
       if (task.PreferredPhases) {
         const phases = task.PreferredPhases;
         
