@@ -49,7 +49,7 @@ Transform your spreadsheet data with AI-powered validation, intelligent error de
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/data-alchemist.git
+git clone https://github.com/mr-godara/data-alchemist.git
 cd data-alchemist
 ```
 
@@ -117,15 +117,6 @@ data-alchemist/
 - **PreferredPhases**: Preferred execution timeframe
 - **MaxConcurrent**: Maximum parallel instances
 
-## 🔧 Configuration
-
-### Environment Variables
-Create a `.env.local` file in the root directory:
-
-```env
-# Add any required environment variables here
-NEXT_PUBLIC_APP_NAME=Data Alchemist
-```
 
 ### Validation Rules
 The system supports various rule types:
