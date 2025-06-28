@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Brain, TrendingUp, AlertTriangle, Zap, Eye, CheckCircle, Sparkles } from 'lucide-react';
+import { Brain, TrendingUp, AlertCircle, Zap, Eye, CheckCircle, Sparkles } from 'lucide-react';
 
 interface AnomalyDetectionProps {
   data: any[];
@@ -326,8 +326,8 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
     switch (type) {
       case 'outlier': return <TrendingUp className="h-4 w-4" />;
       case 'pattern': return <Brain className="h-4 w-4" />;
-      case 'inconsistency': return <AlertTriangle className="h-4 w-4" />;
-      case 'duplicate': return <AlertTriangle className="h-4 w-4 text-red-500" />;
+      case 'inconsistency': return <AlertCircle className="h-4 w-4" />;
+      case 'duplicate': return <AlertCircle className="h-4 w-4 text-red-500" />;
       default: return <Eye className="h-4 w-4" />;
     }
   };

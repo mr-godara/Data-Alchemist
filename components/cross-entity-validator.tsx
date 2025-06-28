@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CheckCircle, AlertCircle, AlertTriangle, RefreshCw, Network, Users, Briefcase, FileSpreadsheet } from 'lucide-react';
+import { CheckCircle, AlertCircle, RefreshCw, Network, Users, Briefcase, FileSpreadsheet } from 'lucide-react';
 
 interface CrossEntityValidatorProps {
   clientsData: any[];
@@ -448,7 +448,7 @@ export function CrossEntityValidator({
       case 'client-task': return <Users className="h-4 w-4" />;
       case 'task-worker': return <Briefcase className="h-4 w-4" />;
       case 'worker-phase': return <FileSpreadsheet className="h-4 w-4" />;
-      case 'priority': return <AlertTriangle className="h-4 w-4" />;
+      case 'priority': return <AlertCircle className="h-4 w-4" />;
       case 'coverage': return <Network className="h-4 w-4" />;
       default: return <CheckCircle className="h-4 w-4" />;
     }
@@ -468,7 +468,7 @@ export function CrossEntityValidator({
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'error': return <AlertCircle className="h-4 w-4 text-red-500" />;
-      case 'warning': return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+      case 'warning': return <AlertCircle className="h-4 w-4 text-yellow-500" />;
       case 'info': return <CheckCircle className="h-4 w-4 text-blue-500" />;
       default: return <CheckCircle className="h-4 w-4" />;
     }

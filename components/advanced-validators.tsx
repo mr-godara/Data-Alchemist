@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, AlertCircle, AlertTriangle, RefreshCw, Settings } from 'lucide-react';
+import { CheckCircle, AlertCircle, RefreshCw, Settings } from 'lucide-react';
 
 interface AdvancedValidatorsProps {
   data: any[];
@@ -510,7 +510,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
       case 'failed':
         return <AlertCircle className="h-4 w-4 text-red-500" />;
       case 'warning':
-        return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
       case 'running':
         return <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>;
       default:

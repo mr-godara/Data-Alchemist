@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { AlertCircle, CheckCircle, AlertTriangle, Search, Filter, Edit2, Save, X, Zap, Sparkles } from 'lucide-react';
+import { AlertCircle, CheckCircle, Search, Filter, Edit2, Save, X, Zap, Sparkles } from 'lucide-react';
 
 interface DataGridProps {
   data: any[];
@@ -126,7 +126,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
       case 'error':
         return <AlertCircle className="h-4 w-4 text-red-500" />;
       case 'warning':
-        return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
       default:
         return null;
     }
@@ -224,7 +224,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                             <AlertCircle className="h-3 w-3 text-red-500" />
                           )}
                           {validationResults.some(r => r.field === column && r.type === 'warning') && (
-                            <AlertTriangle className="h-3 w-3 text-yellow-500" />
+                            <AlertCircle className="h-3 w-3 text-yellow-500" />
                           )}
                         </div>
                       )}

@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AlertCircle, AlertTriangle, CheckCircle, Zap, RefreshCw, X } from 'lucide-react';
+import { AlertCircle, CheckCircle, Zap, RefreshCw, X } from 'lucide-react';
 
 interface ValidationResult {
   type: 'error' | 'warning' | 'info';
@@ -39,7 +39,7 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
       case 'error':
         return <AlertCircle className="h-4 w-4 text-red-500" />;
       case 'warning':
-        return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
+        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
       default:
         return <CheckCircle className="h-4 w-4 text-blue-500" />;
     }
