@@ -183,7 +183,7 @@ export default function RulesPage() {
           </TabsContent>
 
           <TabsContent value="weights" className="space-y-6">
-            <PriorityWeights weights={weights} onWeightsChange={setWeights} />
+            <PriorityWeights weights={weights} onWeightsChange={(w) => setWeights(w as typeof weights)} />
           </TabsContent>
 
           <TabsContent value="export" className="space-y-6">
