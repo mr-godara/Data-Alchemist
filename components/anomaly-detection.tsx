@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Brain, TrendingUp, AlertCircle, Zap, Eye, CheckCircle, Sparkles } from 'lucide-react';
 
 interface AnomalyDetectionProps {
   data: any[];
@@ -324,11 +323,11 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'outlier': return <TrendingUp className="h-4 w-4" />;
-      case 'pattern': return <Brain className="h-4 w-4" />;
-      case 'inconsistency': return <AlertCircle className="h-4 w-4" />;
-      case 'duplicate': return <AlertCircle className="h-4 w-4 text-red-500" />;
-      default: return <Eye className="h-4 w-4" />;
+      case 'outlier': return <span>📈</span>;
+      case 'pattern': return <span>🧠</span>;
+      case 'inconsistency': return <span>⚠️</span>;
+      case 'duplicate': return <span>🚨</span>;
+      default: return <span>👁️</span>;
     }
   };
 
@@ -346,7 +345,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center">
-          <Brain className="h-5 w-5 mr-2 text-purple-500" />
+          <span className="mr-2">🧠</span>
           AI Anomaly Detection
         </CardTitle>
       </CardHeader>
@@ -364,7 +363,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
         {analysisComplete && (
           <div className="space-y-4">
             <Alert>
-              <Sparkles className="h-4 w-4" />
+              <span className="mr-2">✨</span>
               <AlertDescription>
                 AI analysis complete! Found {anomalies.length} potential issues in your data.
                 {anomalies.filter(a => a.type === 'duplicate').length > 0 && (
@@ -377,7 +376,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
 
             {anomalies.length === 0 ? (
               <div className="text-center py-6 text-gray-500">
-                <Brain className="h-12 w-12 mx-auto mb-2 text-gray-300" />
+                <span className="text-4xl mb-2 block">🧠</span>
                 <p className="text-lg font-medium">Your data looks great!</p>
                 <p className="text-sm text-gray-400 mt-1">No significant anomalies detected</p>
               </div>
@@ -433,7 +432,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
                         
                         <div className="bg-blue-50 p-3 rounded-lg mb-3">
                           <div className="flex items-start space-x-2">
-                            <Sparkles className="h-4 w-4 text-blue-500 mt-0.5" />
+                            <span className="text-blue-500 mt-0.5">✨</span>
                             <div>
                               <p className="text-xs font-medium text-blue-900">AI Recommendation:</p>
                               <p className="text-xs text-blue-700">{anomaly.suggestion}</p>
@@ -450,12 +449,12 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
                         >
                           {isApplied ? (
                             <>
-                              <CheckCircle className="h-3 w-3 mr-2" />
+                              <span className="mr-2">✅</span>
                               Applied ✓
                             </>
                           ) : (
                             <>
-                              <Zap className="h-3 w-3 mr-2" />
+                              <span className="mr-2">⚡</span>
                               Apply One-Click Fix
                             </>
                           )}
@@ -472,7 +471,7 @@ export function AnomalyDetection({ data, onAnomalyFound }: AnomalyDetectionProps
               onClick={runAnomalyDetection}
               className="w-full"
             >
-              <Brain className="h-4 w-4 mr-2" />
+              <span className="mr-2">🧠</span>
               Re-analyze Data
             </Button>
           </div>
