@@ -1,14 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Plus, X } from 'lucide-react';
 
 interface RuleBuilderProps {
   onAddRule: (rule: any) => void;
@@ -134,7 +133,7 @@ export function RuleBuilder({ onAddRule }: RuleBuilderProps) {
         <div className="flex items-center justify-between mb-2">
           <Label>Conditions</Label>
           <Button size="sm" variant="outline" onClick={addCondition}>
-            <Plus className="h-4 w-4 mr-2" />
+            <span className="mr-2">➕</span>
             Add Condition
           </Button>
         </div>
@@ -181,7 +180,7 @@ export function RuleBuilder({ onAddRule }: RuleBuilderProps) {
                     onClick={() => removeCondition(index)}
                     className="h-8 w-8 p-0"
                   >
-                    <X className="h-4 w-4" />
+                    🗑️
                   </Button>
                 </div>
               </div>

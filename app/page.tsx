@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Upload, Database, Settings, Download, Sparkles, FileSpreadsheet, Users, Briefcase, CheckCircle, FileText, Play, Network, Zap, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -17,25 +16,25 @@ export default function HomePage() {
 
   const features = [
     {
-      icon: <Upload className="h-6 w-6" />,
+      icon: <span className="text-2xl">📤</span>,
       title: "Drop & Clean",
       description: "Upload messy CSV/XLSX files and let AI tidy them up automatically",
       color: "bg-blue-500"
     },
     {
-      icon: <Zap className="h-6 w-6" />,
+      icon: <span className="text-2xl">⚡</span>,
       title: "One-Click Fixes",
       description: "Fix data problems directly in the table with smart suggestions",
       color: "bg-green-500"
     },
     {
-      icon: <Sparkles className="h-6 w-6" />,
+      icon: <span className="text-2xl">✨</span>,
       title: "Plain English Rules",
       description: "Type rules in natural language - AI converts them to settings",
       color: "bg-purple-500"
     },
     {
-      icon: <Settings className="h-6 w-6" />,
+      icon: <span className="text-2xl">⚙️</span>,
       title: "Smart Priorities",
       description: "Use sliders to set what matters most - cost, speed, or quality",
       color: "bg-orange-500"
@@ -45,7 +44,7 @@ export default function HomePage() {
   const entityTypes = [
     { 
       name: "Clients", 
-      icon: <Users className="h-5 w-5" />, 
+      icon: <span className="text-xl">👥</span>, 
       count: 0, 
       color: "bg-blue-100 text-blue-800", 
       description: "People requesting work with priority levels",
@@ -53,7 +52,7 @@ export default function HomePage() {
     },
     { 
       name: "Workers", 
-      icon: <Briefcase className="h-5 w-5" />, 
+      icon: <span className="text-xl">💼</span>, 
       count: 0, 
       color: "bg-green-100 text-green-800", 
       description: "People who can do the work with specific skills",
@@ -61,7 +60,7 @@ export default function HomePage() {
     },
     { 
       name: "Tasks", 
-      icon: <FileSpreadsheet className="h-5 w-5" />, 
+      icon: <span className="text-xl">📋</span>, 
       count: 0, 
       color: "bg-purple-100 text-purple-800", 
       description: "Units of work that need to be completed",
@@ -149,7 +148,7 @@ export default function HomePage() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-3">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
-                <Sparkles className="h-6 w-6 text-white" />
+                <span className="text-white">✨</span>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Data Alchemist</h1>
@@ -160,7 +159,7 @@ export default function HomePage() {
               <Dialog open={showSampleData} onOpenChange={setShowSampleData}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm">
-                    <Database className="h-4 w-4 mr-2" />
+                    <span className="mr-2">🗄️</span>
                     Try Sample Data
                   </Button>
                 </DialogTrigger>
@@ -218,14 +217,14 @@ export default function HomePage() {
                       Cancel
                     </Button>
                     <Button onClick={handleStartWithSampleData}>
-                      <Play className="h-4 w-4 mr-2" />
+                      <span className="mr-2">▶️</span>
                       Start with This Data
                     </Button>
                   </div>
                 </DialogContent>
               </Dialog>
               <Button size="sm" onClick={handleFileUpload} className="bg-gradient-to-r from-blue-500 to-purple-600">
-                <Upload className="h-4 w-4 mr-2" />
+                <span className="mr-2">📤</span>
                 Upload Your Files
               </Button>
             </div>
@@ -254,11 +253,11 @@ export default function HomePage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-12 pr-4 py-3 text-lg border-2 border-blue-200 focus:border-blue-500 rounded-xl"
               />
-              <Sparkles className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-blue-500" />
+              <span className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-blue-500">✨</span>
             </div>
             {searchQuery && (
               <div className="mt-2 p-3 bg-blue-50 rounded-lg text-sm text-blue-700">
-                <Zap className="inline h-4 w-4 mr-1" />
+                <span className="mr-1">⚡</span>
                 {handleNaturalLanguageSearch(searchQuery)}
               </div>
             )}
@@ -294,7 +293,7 @@ export default function HomePage() {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Database className="h-5 w-5 mr-2 text-blue-500" />
+              <span className="mr-2 text-blue-500">🗄️</span>
               What Kind of Data Can You Clean?
             </CardTitle>
             <CardDescription>
@@ -320,7 +319,7 @@ export default function HomePage() {
                       className="w-full"
                       onClick={() => window.location.href = `/ingest?entity=${entity.name.toLowerCase()}`}
                     >
-                      <Upload className="h-4 w-4 mr-2" />
+                      <span className="mr-2">📤</span>
                       Upload {entity.name}
                     </Button>
                   </CardContent>
@@ -334,7 +333,7 @@ export default function HomePage() {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <ArrowRight className="h-5 w-5 mr-2 text-green-500" />
+              <span className="mr-2 text-green-500">→</span>
               Simple 4-Step Process
             </CardTitle>
             <CardDescription>
@@ -407,17 +406,17 @@ export default function HomePage() {
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
             onClick={handleStartWithSampleData}
           >
-            <Play className="h-5 w-5 mr-2" />
+            <span className="mr-2">▶️</span>
             Try with Sample Data
           </Button>
           <Button size="lg" variant="outline" onClick={handleFileUpload}>
-            <Upload className="h-5 w-5 mr-2" />
+            <span className="mr-2">📤</span>
             Upload Your Files
           </Button>
           <Dialog open={showDocumentation} onOpenChange={setShowDocumentation}>
             <DialogTrigger asChild>
               <Button size="lg" variant="outline">
-                <FileText className="h-5 w-5 mr-2" />
+                <span className="mr-2">📄</span>
                 How It Works
               </Button>
             </DialogTrigger>

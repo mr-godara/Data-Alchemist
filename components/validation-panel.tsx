@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AlertCircle, CheckCircle, Zap, RefreshCw, X } from 'lucide-react';
 
 interface ValidationResult {
   type: 'error' | 'warning' | 'info';
@@ -37,11 +37,11 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
   const getResultIcon = (type: string) => {
     switch (type) {
       case 'error':
-        return <AlertCircle className="h-4 w-4 text-red-500" />;
+        return <span className="text-red-500">❌</span>;
       case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+        return <span className="text-yellow-500">⚠️</span>;
       default:
-        return <CheckCircle className="h-4 w-4 text-blue-500" />;
+        return <span className="text-blue-500">✅</span>;
     }
   };
 
@@ -57,7 +57,7 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center">
-            <AlertCircle className="h-5 w-5 mr-2 text-blue-500" />
+            <span className="mr-2 text-blue-500">📊</span>
             Validation Results
           </CardTitle>
           <Button 
@@ -67,9 +67,9 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
             disabled={isRunningValidation}
           >
             {isRunningValidation ? (
-              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+              <span className="mr-2 animate-spin">��</span>
             ) : (
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <span className="mr-2">🔄</span>
             )}
             Re-validate
           </Button>
@@ -106,7 +106,7 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
               <div className="space-y-2 max-h-64 overflow-y-auto">
                 {filteredResults.length === 0 ? (
                   <div className="text-center py-6 text-gray-500">
-                    <CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-500" />
+                    <span className="text-green-500 text-2xl mb-2 block">✅</span>
                     <p>No {selectedTab === 'all' ? 'issues' : selectedTab + 's'} found</p>
                     <p className="text-sm text-gray-400 mt-1">Your data looks clean!</p>
                   </div>
@@ -129,7 +129,7 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
                             {result.suggestion && (
                               <div className="mt-2 p-2 bg-blue-50 rounded text-xs">
                                 <div className="flex items-center space-x-1 mb-1">
-                                  <Zap className="h-3 w-3 text-blue-500" />
+                                  <span className="text-blue-500">⚡</span>
                                   <span className="font-medium text-blue-700">AI Suggestion:</span>
                                 </div>
                                 <p className="text-blue-600">{result.suggestion}</p>
@@ -139,19 +139,18 @@ export function ValidationPanel({ results, onFixError }: ValidationPanelProps) {
                         </div>
                         <div className="flex items-center space-x-1 ml-2">
                           <Button
+                            variant="outline"
                             size="sm"
-                            variant="ghost"
-                            className="h-6 w-6 p-0"
                             onClick={() => onFixError(result)}
                           >
-                            <Zap className="h-3 w-3" />
+                            <span className="mr-1">⚡</span>
                           </Button>
                           <Button
-                            size="sm"
                             variant="ghost"
+                            size="sm"
                             className="h-6 w-6 p-0"
                           >
-                            <X className="h-3 w-3" />
+                            <span>❌</span>
                           </Button>
                         </div>
                       </div>

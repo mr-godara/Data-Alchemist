@@ -1,12 +1,9 @@
-'use client';
-
+"use client";
 import { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Upload, FileSpreadsheet, AlertCircle, CheckCircle, Sparkles, ArrowRight, Download, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DataGrid } from '@/components/data-grid';
@@ -292,7 +289,6 @@ export default function IngestPage() {
                 {entityType}
               </Badge>
               <Button variant="outline" size="sm" onClick={handleConfigure}>
-                <Settings className="h-4 w-4 mr-2" />
                 Configure
               </Button>
             </div>
@@ -307,18 +303,18 @@ export default function IngestPage() {
             <div className="flex items-center space-x-8">
               <div className={`flex items-center space-x-2 ${currentStep === 'upload' ? 'text-blue-600' : currentStep === 'mapping' || currentStep === 'validation' ? 'text-green-600' : 'text-gray-400'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'upload' ? 'bg-blue-100' : currentStep === 'mapping' || currentStep === 'validation' ? 'bg-green-100' : 'bg-gray-100'}`}>
-                  {currentStep === 'mapping' || currentStep === 'validation' ? <CheckCircle className="h-5 w-5" /> : '1'}
+                  {currentStep === 'mapping' || currentStep === 'validation' ? <span className="text-green-600">✅</span> : '1'}
                 </div>
                 <span className="font-medium">Upload</span>
               </div>
-              <ArrowRight className="h-4 w-4 text-gray-400" />
+              <span className="text-gray-400">→</span>
               <div className={`flex items-center space-x-2 ${currentStep === 'mapping' ? 'text-blue-600' : currentStep === 'validation' ? 'text-green-600' : 'text-gray-400'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'mapping' ? 'bg-blue-100' : currentStep === 'validation' ? 'bg-green-100' : 'bg-gray-100'}`}>
-                  {currentStep === 'validation' ? <CheckCircle className="h-5 w-5" /> : '2'}
+                  {currentStep === 'validation' ? <span className="text-green-600">✅</span> : '2'}
                 </div>
                 <span className="font-medium">Map Headers</span>
               </div>
-              <ArrowRight className="h-4 w-4 text-gray-400" />
+              <span className="text-gray-400">→</span>
               <div className={`flex items-center space-x-2 ${currentStep === 'validation' ? 'text-blue-600' : 'text-gray-400'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'validation' ? 'bg-blue-100' : 'bg-gray-100'}`}>
                   3
@@ -348,7 +344,7 @@ export default function IngestPage() {
             >
               <CardContent className="pt-6">
                 <div className="text-center">
-                  <FileSpreadsheet className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+                  <span className="mx-auto text-4xl text-gray-400 mb-4 block">📊</span>
                   <h3 className="text-lg font-medium text-gray-900 mb-2">
                     Upload {config.title}
                   </h3>
@@ -370,7 +366,7 @@ export default function IngestPage() {
                   <label htmlFor="file-upload">
                     <Button className="cursor-pointer" asChild>
                       <span>
-                        <Upload className="h-4 w-4 mr-2" />
+                        <span className="mr-2">📤</span>
                         Choose Files
                       </span>
                     </Button>
@@ -386,7 +382,7 @@ export default function IngestPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Sparkles className="h-5 w-5 mr-2 text-blue-500" />
+                  <span className="mr-2 text-blue-500">✨</span>
                   Expected Columns & Relationships
                 </CardTitle>
                 <CardDescription>
@@ -454,7 +450,7 @@ export default function IngestPage() {
         {currentStep === 'mapping' && (
           <div className="space-y-6">
             <Alert>
-              <Sparkles className="h-4 w-4" />
+              <span className="mr-2">✨</span>
               <AlertDescription>
                 AI has automatically mapped your columns. Review and adjust the mappings below.
               </AlertDescription>
@@ -473,7 +469,7 @@ export default function IngestPage() {
               </Button>
               <Button onClick={runValidation}>
                 Continue to Validation
-                <ArrowRight className="h-4 w-4 ml-2" />
+                <span className="ml-2">→</span>
               </Button>
             </div>
           </div>
@@ -550,12 +546,12 @@ export default function IngestPage() {
               </Button>
               <div className="space-x-2">
                 <Button variant="outline" onClick={handleExportData}>
-                  <Download className="h-4 w-4 mr-2" />
+                  <span className="mr-2">📥</span>
                   Export Data
                 </Button>
                 <Button onClick={() => window.location.href = '/rules'}>
                   Configure Rules
-                  <ArrowRight className="h-4 w-4 ml-2" />
+                  <span className="ml-2">→</span>
                 </Button>
               </div>
             </div>

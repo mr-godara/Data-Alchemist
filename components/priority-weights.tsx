@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BarChart3, TrendingUp, Sliders, RotateCw } from 'lucide-react';
 
 interface PriorityWeightsProps {
   weights: Record<string, number>;
@@ -110,7 +109,7 @@ export function PriorityWeights({ weights, onWeightsChange }: PriorityWeightsPro
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <Sliders className="h-5 w-5 mr-2 text-blue-500" />
+            <span className="mr-2 text-blue-500">🎛️</span>
             Priority Weights Configuration
           </CardTitle>
           <CardDescription>
@@ -130,7 +129,7 @@ export function PriorityWeights({ weights, onWeightsChange }: PriorityWeightsPro
                 <h4 className="font-medium">Adjust Weights</h4>
                 <div className="flex space-x-2">
                   <Button size="sm" variant="outline" onClick={randomizeWeights}>
-                    <RotateCw className="h-4 w-4 mr-2" />
+                    <span className="mr-2">🔄</span>
                     Randomize
                   </Button>
                 </div>
@@ -244,7 +243,7 @@ export function PriorityWeights({ weights, onWeightsChange }: PriorityWeightsPro
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center">
-            <BarChart3 className="h-5 w-5 mr-2 text-green-500" />
+            <span className="mr-2 text-green-500">📊</span>
             Weight Distribution
           </CardTitle>
         </CardHeader>

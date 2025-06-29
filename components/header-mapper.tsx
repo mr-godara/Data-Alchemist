@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Sparkles, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface HeaderMapperProps {
   originalHeaders: string[];
@@ -104,15 +103,15 @@ export function HeaderMapper({
   };
 
   const getConfidenceIcon = (conf: number) => {
-    if (conf >= 0.8) return <CheckCircle className="h-4 w-4" />;
-    return <AlertCircle className="h-4 w-4" />;
+    if (conf >= 0.8) return <span className="text-green-500">✅</span>;
+    return <span className="text-yellow-500">⚠️</span>;
   };
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center">
-          <Sparkles className="h-5 w-5 mr-2 text-blue-500" />
+          <span className="mr-2 text-blue-500">✨</span>
           AI Header Mapping
         </CardTitle>
       </CardHeader>
@@ -133,7 +132,7 @@ export function HeaderMapper({
                   </div>
                 </div>
                 
-                <ArrowRight className="h-4 w-4 text-gray-400" />
+                <span className="text-gray-400">→</span>
                 
                 <div className="flex-1">
                   <Select
@@ -171,7 +170,7 @@ export function HeaderMapper({
 
         <div className="bg-blue-50 p-4 rounded-lg">
           <div className="flex items-start space-x-2">
-            <Sparkles className="h-5 w-5 text-blue-500 mt-0.5" />
+            <span className="mr-2 text-blue-500">✨</span>
             <div>
               <h4 className="font-medium text-blue-900">AI Mapping Results</h4>
               <p className="text-sm text-blue-700 mt-1">

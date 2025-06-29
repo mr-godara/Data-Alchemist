@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { AlertCircle, CheckCircle, Search, Filter, Edit2, Save, X, Zap, Sparkles } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 interface DataGridProps {
   data: any[];
@@ -124,9 +124,9 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
   const getStatusIcon = (status: string | null) => {
     switch (status) {
       case 'error':
-        return <AlertCircle className="h-4 w-4 text-red-500" />;
+        return <span className="text-red-500">❌</span>;
       case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+        return <span className="text-yellow-500">⚠️</span>;
       default:
         return null;
     }
@@ -164,12 +164,12 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center">
-            <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
+            <span className="mr-2 text-green-500">✅</span>
             Interactive Data Grid ({filteredData.length} rows)
           </CardTitle>
           <div className="flex items-center space-x-2">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔍</span>
               <Input
                 placeholder="Try: 'high priority clients' or 'javascript workers'"
                 value={searchTerm}
@@ -177,7 +177,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                 className="pl-9 w-64"
               />
               {searchTerm && (
-                <Sparkles className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 h-4 w-4" />
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500">✨</span>
               )}
             </div>
             <Button
@@ -185,7 +185,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
               size="sm"
               onClick={() => setFilterErrors(!filterErrors)}
             >
-              <Filter className="h-4 w-4 mr-2" />
+              <span className="mr-2">🔍</span>
               Errors Only
             </Button>
           </div>
@@ -193,7 +193,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
         
         {searchTerm && (
           <div className="text-sm text-blue-600 bg-blue-50 p-2 rounded">
-            <Sparkles className="inline h-4 w-4 mr-1" />
+            <span className="mr-1">✨</span>
             {searchTerm.includes('high priority') ? 'Showing high priority clients (level 4-5)' :
              searchTerm.includes('javascript') ? 'Showing JavaScript-related records' :
              searchTerm.includes('frontend') ? 'Showing frontend tasks and workers' :
@@ -221,10 +221,10 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                       {validationResults.some(r => r.field === column) && (
                         <div className="flex items-center space-x-1">
                           {validationResults.some(r => r.field === column && r.type === 'error') && (
-                            <AlertCircle className="h-3 w-3 text-red-500" />
+                            <span className="text-red-500">❌</span>
                           )}
                           {validationResults.some(r => r.field === column && r.type === 'warning') && (
-                            <AlertCircle className="h-3 w-3 text-yellow-500" />
+                            <span className="text-yellow-500">⚠️</span>
                           )}
                         </div>
                       )}
@@ -282,7 +282,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                                   className="h-8 w-8 p-0"
                                   onClick={() => handleSaveEdit(originalRowIndex, column)}
                                 >
-                                  <Save className="h-3 w-3" />
+                                  <span>💾</span>
                                 </Button>
                                 <Button
                                   size="sm"
@@ -290,7 +290,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                                   className="h-8 w-8 p-0"
                                   onClick={handleCancelEdit}
                                 >
-                                  <X className="h-3 w-3" />
+                                  <span>❌</span>
                                 </Button>
                               </div>
                             ) : (
@@ -306,7 +306,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                                       onClick={() => handleApplySuggestion(originalRowIndex, column)}
                                       title="Apply AI suggestion"
                                     >
-                                      <Zap className="h-3 w-3" />
+                                      <span>⚡</span>
                                     </Button>
                                   )}
                                   <Button
@@ -315,7 +315,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                                     className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                                     onClick={() => handleCellEdit(originalRowIndex, column, String(row[column]))}
                                   >
-                                    <Edit2 className="h-3 w-3" />
+                                    <span>✏️</span>
                                   </Button>
                                 </div>
                               </>
@@ -327,7 +327,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
                               <div>{validationMessage}</div>
                               {validationSuggestion && (
                                 <div className="text-blue-200 mt-1">
-                                  <Zap className="inline h-3 w-3 mr-1" />
+                                  <span>⚡</span>
                                   Suggestion: {validationSuggestion}
                                 </div>
                               )}
@@ -345,7 +345,7 @@ export function DataGrid({ data, validationResults, onDataChange }: DataGridProp
         
         {filteredData.length === 0 && (
           <div className="text-center py-8 text-gray-500">
-            <Search className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+            <span className="text-4xl mx-auto mb-4 text-gray-300 block">🔍</span>
             <p className="text-lg font-medium">No data found</p>
             <p className="text-sm text-gray-400 mt-1">
               {searchTerm ? 'Try a different search term' : 'Upload data to get started'}

@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, AlertCircle, RefreshCw, Settings } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface AdvancedValidatorsProps {
   data: any[];
@@ -506,11 +506,11 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'passed':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <span className="text-green-500">✅</span>;
       case 'failed':
-        return <AlertCircle className="h-4 w-4 text-red-500" />;
+        return <span className="text-red-500">❌</span>;
       case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+        return <span className="text-yellow-500">⚠️</span>;
       case 'running':
         return <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>;
       default:
@@ -538,7 +538,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center">
-            <Settings className="h-5 w-5 mr-2 text-blue-500" />
+            <span className="mr-2 text-blue-500">⚙️</span>
             Advanced Validators
           </CardTitle>
           <Button
@@ -548,9 +548,9 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
             disabled={isRunning}
           >
             {isRunning ? (
-              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+              <span className="mr-2 animate-spin">🔄</span>
             ) : (
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <span className="mr-2">🔄</span>
             )}
             Run All
           </Button>
@@ -558,7 +558,7 @@ export function AdvancedValidators({ data, entityType, onValidationComplete }: A
         
         {isRunning && (
           <div className="space-y-2">
-            <Progress value={progress} className="w-full" />
+            {/* <Progress value={progress} className="w-full" /> */}
             <p className="text-sm text-gray-600">Running validation checks...</p>
           </div>
         )}

@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CheckCircle, AlertCircle, RefreshCw, Network, Users, Briefcase, FileSpreadsheet } from 'lucide-react';
 
 interface CrossEntityValidatorProps {
   clientsData: any[];
@@ -445,12 +444,12 @@ export function CrossEntityValidator({
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'client-task': return <Users className="h-4 w-4" />;
-      case 'task-worker': return <Briefcase className="h-4 w-4" />;
-      case 'worker-phase': return <FileSpreadsheet className="h-4 w-4" />;
-      case 'priority': return <AlertCircle className="h-4 w-4" />;
-      case 'coverage': return <Network className="h-4 w-4" />;
-      default: return <CheckCircle className="h-4 w-4" />;
+      case 'client-task': return <span>👥</span>;
+      case 'task-worker': return <span>💼</span>;
+      case 'worker-phase': return <span>📊</span>;
+      case 'priority': return <span>⚠️</span>;
+      case 'coverage': return <span>🌐</span>;
+      default: return <span>✅</span>;
     }
   };
 
@@ -467,10 +466,10 @@ export function CrossEntityValidator({
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'error': return <AlertCircle className="h-4 w-4 text-red-500" />;
-      case 'warning': return <AlertCircle className="h-4 w-4 text-yellow-500" />;
-      case 'info': return <CheckCircle className="h-4 w-4 text-blue-500" />;
-      default: return <CheckCircle className="h-4 w-4" />;
+      case 'error': return <span className="text-red-500">❌</span>;
+      case 'warning': return <span className="text-yellow-500">⚠️</span>;
+      case 'info': return <span className="text-blue-500">✅</span>;
+      default: return <span>✅</span>;
     }
   };
 
@@ -483,7 +482,7 @@ export function CrossEntityValidator({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center">
-            <Network className="h-5 w-5 mr-2 text-blue-500" />
+            <span className="mr-2 text-blue-500">🌐</span>
             Cross-Entity Relationship Validation
           </CardTitle>
           <Button
@@ -493,9 +492,9 @@ export function CrossEntityValidator({
             disabled={isValidating}
           >
             {isValidating ? (
-              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+              <span className="mr-2 animate-spin">🔄</span>
             ) : (
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <span className="mr-2">🔄</span>
             )}
             Validate Relationships
           </Button>
@@ -503,7 +502,7 @@ export function CrossEntityValidator({
         
         {isValidating && (
           <div className="space-y-2">
-            <Progress value={progress} className="w-full" />
+            {/* <Progress value={progress} className="w-full" /> */}
             <p className="text-sm text-gray-600">Validating data relationships...</p>
           </div>
         )}
@@ -513,7 +512,7 @@ export function CrossEntityValidator({
         {validationComplete && (
           <div className="space-y-4">
             <Alert>
-              <Network className="h-4 w-4" />
+              <span className="mr-2">🌐</span>
               <AlertDescription>
                 Cross-entity validation complete. Found {results.length} relationship issues across {clientsData.length} clients, {workersData.length} workers, and {tasksData.length} tasks.
               </AlertDescription>
@@ -541,7 +540,7 @@ export function CrossEntityValidator({
 
             {results.length === 0 ? (
               <div className="text-center py-6 text-gray-500">
-                <Network className="h-12 w-12 mx-auto mb-2 text-gray-300" />
+                <span className="text-4xl mx-auto mb-2 text-gray-300 block">🌐</span>
                 <p>All entity relationships are valid!</p>
                 <p className="text-sm text-gray-400 mt-1">Your data is properly connected.</p>
               </div>

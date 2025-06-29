@@ -9,7 +9,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
-import { Settings, Sparkles, Download, Plus, Trash2, HandIcon as DragHandleDots2Icon, Sliders } from 'lucide-react';
 import { RuleBuilder } from '@/components/rule-builder';
 import { PriorityWeights } from '@/components/priority-weights';
 import { AIRuleAssistant } from '@/components/ai-rule-assistant';
@@ -77,7 +76,7 @@ export default function RulesPage() {
                 {rules.length} Rules
               </Badge>
               <Button variant="outline" size="sm" onClick={handleExportRules}>
-                <Download className="h-4 w-4 mr-2" />
+                <span className="mr-2">📥</span>
                 Export Config
               </Button>
             </div>
@@ -90,19 +89,19 @@ export default function RulesPage() {
         <Tabs defaultValue="rules" className="space-y-6">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="rules" className="flex items-center">
-              <Settings className="h-4 w-4 mr-2" />
+              <span className="mr-2">⚙️</span>
               Business Rules
             </TabsTrigger>
             <TabsTrigger value="ai-assistant" className="flex items-center">
-              <Sparkles className="h-4 w-4 mr-2" />
+              <span className="mr-2">✨</span>
               AI Assistant
             </TabsTrigger>
             <TabsTrigger value="weights" className="flex items-center">
-              <Sliders className="h-4 w-4 mr-2" />
+              <span className="mr-2">🎛️</span>
               Priority Weights
             </TabsTrigger>
             <TabsTrigger value="export" className="flex items-center">
-              <Download className="h-4 w-4 mr-2" />
+              <span className="mr-2">📥</span>
               Export & Deploy
             </TabsTrigger>
           </TabsList>
@@ -113,7 +112,7 @@ export default function RulesPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center">
-                    <Plus className="h-5 w-5 mr-2 text-green-500" />
+                    <span className="mr-2 text-green-500">➕</span>
                     Create New Rule
                   </CardTitle>
                   <CardDescription>
@@ -136,7 +135,7 @@ export default function RulesPage() {
                 <CardContent>
                   {rules.length === 0 ? (
                     <div className="text-center py-8 text-gray-500">
-                      <Settings className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+                      <span className="text-4xl mx-auto mb-4 text-gray-300 block">⚙️</span>
                       <p className="text-lg font-medium">No rules configured yet</p>
                       <p className="text-sm">Create your first rule using the builder or AI assistant</p>
                     </div>
@@ -165,7 +164,7 @@ export default function RulesPage() {
                                 className="text-red-600 hover:text-red-700"
                                 onClick={() => handleDeleteRule(rule.id)}
                               >
-                                <Trash2 className="h-4 w-4" />
+                                🗑️
                               </Button>
                             </div>
                           </div>
@@ -214,11 +213,11 @@ export default function RulesPage() {
                   <h4 className="font-medium">Export Options</h4>
                   <div className="space-y-2">
                     <Button className="w-full justify-start" onClick={handleExportRules}>
-                      <Download className="h-4 w-4 mr-2" />
+                      <span className="mr-2">📥</span>
                       Download rules.json
                     </Button>
                     <Button variant="outline" className="w-full justify-start">
-                      <Download className="h-4 w-4 mr-2" />
+                      <span className="mr-2">📊</span>
                       Export as CSV
                     </Button>
                   </div>

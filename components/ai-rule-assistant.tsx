@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Sparkles, Wand2, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface AIRuleAssistantProps {
   onRuleGenerated: (rule: any) => void;
@@ -177,7 +177,7 @@ export function AIRuleAssistant({ onRuleGenerated }: AIRuleAssistantProps) {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center">
-          <Sparkles className="h-5 w-5 mr-2 text-blue-500" />
+          <span className="text-blue-500 mr-2">🚀</span>
           AI Rule Assistant
         </CardTitle>
         <p className="text-sm text-gray-600">
@@ -207,7 +207,7 @@ export function AIRuleAssistant({ onRuleGenerated }: AIRuleAssistantProps) {
             </>
           ) : (
             <>
-              <Wand2 className="h-4 w-4 mr-2" />
+              <span className="mr-2">🛠️</span>
               Convert to Rule
             </>
           )}
@@ -218,7 +218,7 @@ export function AIRuleAssistant({ onRuleGenerated }: AIRuleAssistantProps) {
             <CardContent className="pt-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center">
-                  <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
+                  <span className="text-green-600 mr-2">✅</span>
                   <h4 className="font-medium text-green-900">{generatedRule.name}</h4>
                 </div>
                 <Badge variant="outline" className="text-green-700 border-green-300">
@@ -231,7 +231,7 @@ export function AIRuleAssistant({ onRuleGenerated }: AIRuleAssistantProps) {
               {generatedRule.explanation && (
                 <div className="bg-blue-50 p-3 rounded-lg mb-3">
                   <div className="flex items-start space-x-2">
-                    <MessageSquare className="h-4 w-4 text-blue-500 mt-0.5" />
+                    <span className="text-blue-500 mr-2">💡</span>
                     <div>
                       <p className="text-xs font-medium text-blue-900">How this works:</p>
                       <p className="text-xs text-blue-700">{generatedRule.explanation}</p>
@@ -251,7 +251,7 @@ export function AIRuleAssistant({ onRuleGenerated }: AIRuleAssistantProps) {
 
               <div className="flex space-x-2">
                 <Button size="sm" onClick={handleAcceptRule} className="flex-1">
-                  <CheckCircle className="h-3 w-3 mr-2" />
+                  <span className="mr-2">✅</span>
                   Add This Rule
                 </Button>
                 <Button size="sm" variant="outline" onClick={() => setGeneratedRule(null)}>
@@ -264,7 +264,7 @@ export function AIRuleAssistant({ onRuleGenerated }: AIRuleAssistantProps) {
 
         <div className="border-t pt-4">
           <h4 className="font-medium mb-3 text-sm flex items-center">
-            <Sparkles className="h-4 w-4 mr-2 text-blue-500" />
+            <span className="text-blue-500 mr-2">🚀</span>
             Try These Examples:
           </h4>
           <div className="space-y-2">
